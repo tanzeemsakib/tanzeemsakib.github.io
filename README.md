@@ -5,4 +5,4 @@ Mathematics and currently based in Dhaka, Bangladesh. My interests lie in machin
 learning and data analysis. I am also involved in digital art and game development for
 projects-competitions, and professional commissions.
 
-![Demo GIF](assets/amps-pi.gif)
+![AMPS PI GIF](assets/amps-pi.gif)
