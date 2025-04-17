@@ -11,4 +11,3 @@ projects-competitions, and professional commissions.
 [![Behance](https://img.shields.io/badge/-Behance-000000?style=for-the-badge&logo=behance&logoColor=white)](https://www.behance.net/tanzeemsakib)
 [![itch.io](https://img.shields.io/badge/-itch.io-000000?style=for-the-badge&logo=itch.io&logoColor=white)](https://tanzeem-ahmed-sakib.itch.io/)
 [![GitHub](https://img.shields.io/badge/-GitHub-000000?style=for-the-badge&logo=github&logoColor=white)](https://tanzeemsakib.github.io/)
-
