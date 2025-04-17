@@ -1,5 +1,3 @@
-# tanzeemsakib.github.io
-
 ## Tanzeem Ahmed
 
 **Indie Game Developer and Visual Artist**
