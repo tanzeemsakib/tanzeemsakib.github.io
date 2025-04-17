@@ -7,7 +7,14 @@ projects-competitions, and professional commissions.
 
 ![AMPS PI GIF](assets/amps-pi.gif)
 
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-000000?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tanzeemsakib/)
-[![Behance](https://img.shields.io/badge/-Behance-000000?style=for-the-badge&logo=behance&logoColor=white)](https://www.behance.net/tanzeemsakib)
-[![itch.io](https://img.shields.io/badge/-itch.io-000000?style=for-the-badge&logo=itch.io&logoColor=white)](https://tanzeem-ahmed-sakib.itch.io/)
-[![GitHub](https://img.shields.io/badge/-GitHub-000000?style=for-the-badge&logo=github&logoColor=white)](https://tanzeemsakib.github.io/)
+<!-- Social icons section -->
+<p align="center">
+  <a href="https://www.linkedin.com/in/tanzeemsakib/"><img width="32px" alt="LinkedIn" title="LinkedIn" src="https://i.imgur.com/yRpa1dQ.png"/></a>
+  &#8287;&#8287;&#8287;&#8287;&#8287;
+  <a href="https://www.behance.net/tanzeemsakib"><img width="32px" alt="Behance" title="Behance" src="https://i.imgur.com/4jyDNZc.png"/></a>
+  &#8287;&#8287;&#8287;&#8287;&#8287;
+  <a href="https://tanzeem-ahmed-sakib.itch.io/"><img width="32px" alt="itch.io" title="itch.io" src="https://i.imgur.com/gwaJXMy.png"/></a>
+  &#8287;&#8287;&#8287;&#8287;&#8287;
+  <a href="https://tanzeemsakib.github.io/"><img width="32px" alt="GitHub" title="Portfolio" src="https://i.imgur.com/q1g2pg6.png"/></a>
+</p>
+
