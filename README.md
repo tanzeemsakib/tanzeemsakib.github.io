@@ -8,8 +8,8 @@ projects-competitions, and professional commissions.
 ![AMPS PI GIF](assets/amps-pi.gif)
 
 <p align="center">
-[![LinkedIn](https://custom-icon-badges.demolab.com/badge/LinkedIn-000000?style=for-the-badge&logo=linkedin-white&logoColor=white)](https://www.linkedin.com/in/tanzeemsakib/)
-[![Behance](https://img.shields.io/badge/-Behance-000000?style=for-the-badge&logo=behance&logoColor=white)](https://www.behance.net/tanzeemsakib)
-[![itch.io](https://img.shields.io/badge/-itch.io-000000?style=for-the-badge&logo=itch.io&logoColor=white)](https://tanzeem-ahmed-sakib.itch.io/)
-[![GitHub](https://img.shields.io/badge/-GitHub-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tanzeemsakib)
+  [![LinkedIn](https://custom-icon-badges.demolab.com/badge/LinkedIn-000000?style=for-the-badge&logo=linkedin-white&logoColor=white)](https://www.linkedin.com/in/tanzeemsakib/)
+  [![Behance](https://img.shields.io/badge/-Behance-000000?style=for-the-badge&logo=behance&logoColor=white)](https://www.behance.net/tanzeemsakib)
+  [![itch.io](https://img.shields.io/badge/-itch.io-000000?style=for-the-badge&logo=itch.io&logoColor=white)](https://tanzeem-ahmed-sakib.itch.io/)
+  [![GitHub](https://img.shields.io/badge/-GitHub-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tanzeemsakib)
 </p>
