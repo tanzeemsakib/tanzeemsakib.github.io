@@ -1,3 +1,4 @@
-title: ""       # Removes or changes the site title
-author: ""      # Removes or changes the author name
+title: ""
+author: ""
+description: ""
 theme: midnight
