@@ -7,13 +7,7 @@ projects-competitions, and professional commissions.
 
 ![AMPS PI GIF](assets/amps-pi.gif)
 
-<!-- Social icons section -->
-<p align="center">
-  <a href="https://www.linkedin.com/in/tanzeemsakib/"><img width="32px" alt="LinkedIn" title="LinkedIn" src="https://img.icons8.com/ios/452/linkedin.png" style="background-color:black; border-radius:5px; padding:5px;"/></a>
-  &#8287;&#8287;&#8287;&#8287;&#8287;
-  <a href="https://www.behance.net/tanzeemsakib"><img width="32px" alt="Behance" title="Behance" src="https://img.icons8.com/ios/452/behance.png" style="background-color:black; border-radius:5px; padding:5px;"/></a>
-  &#8287;&#8287;&#8287;&#8287;&#8287;
-  <a href="https://tanzeem-ahmed-sakib.itch.io/"><img width="32px" alt="itch.io" title="itch.io" src="https://img.icons8.com/ios/452/itch-io.png" style="background-color:black; border-radius:5px; padding:5px;"/></a>
-  &#8287;&#8287;&#8287;&#8287;&#8287;
-  <a href="https://tanzeemsakib.github.io/"><img width="32px" alt="GitHub" title="Portfolio" src="https://img.icons8.com/ios/452/github.png" style="background-color:black; border-radius:5px; padding:5px;"/></a>
-</p>
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-000000?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tanzeemsakib/)
+[![Behance](https://img.shields.io/badge/-Behance-000000?style=for-the-badge&logo=behance&logoColor=white)](https://www.behance.net/tanzeemsakib)
+[![itch.io](https://img.shields.io/badge/-itch.io-000000?style=for-the-badge&logo=itch.io&logoColor=white)](https://tanzeem-ahmed-sakib.itch.io/)
+[![Portfolio](https://img.shields.io/badge/-Portfolio-000000?style=for-the-badge&logo=github&logoColor=white)](https://tanzeemsakib.github.io/)
