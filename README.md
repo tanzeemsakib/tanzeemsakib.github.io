@@ -11,3 +11,7 @@ projects-competitions, and professional commissions.
 [![GitHub](https://img.shields.io/badge/-GitHub-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tanzeemsakib)
 
 ![AMPS PI GIF](assets/smol-moodboard.gif)
+
+## smol: smol – Well-being FMCG Brand Design
+
+Created for a business case competition, _smol_: smol is a locally produced and procured pet food brand centered on well-being and sustainability. With clearly advertised nutrient values and eco-friendly packaging, the brand is designed to appeal to health-conscious, eco-aware pet owners. The visual identity reflects a wholesome and approachable tone, aligned with the brand’s values.
