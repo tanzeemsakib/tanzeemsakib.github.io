@@ -20,3 +20,8 @@ Created for a business case competition, _smol_ is a locally produced and procur
 
 ![LOVECRAFTIAN ILLUSTRATION](assets/lovecraftian-illustration.png)
 
+## Illustration | Personal Work
+
+A surreal composition inspired by manga panel layouts and Lovecraftian horror, this piece combines clean contour lines with a limited range of desaturated blues, lending a cold, distant tone to evoke a sense of deep-sea dread and quiet madness—hinting at themes of obsession, fear, and cosmic awareness.
+
+<a href="https://www.behance.net/tanzeemsakib" style="color: black; text-decoration: underline;">See more&gt;&gt;</a>
