@@ -15,3 +15,5 @@ projects-competitions, and professional commissions.
 ## smol – Well-being FMCG Brand Design
 
 Created for a business case competition, _smol_ is a locally produced and procured pet food brand centered on well-being and sustainability. With clearly advertised nutrient values and eco-friendly packaging, the brand is designed to appeal to health-conscious, eco-aware pet owners. The visual identity reflects a wholesome and approachable tone, aligned with the brand’s values.
+
+<a href="https://www.behance.net/tanzeemsakib" style="color: black; text-decoration: underline;">See more&gt;&gt;</a>
