@@ -11,6 +11,16 @@ projects-competitions, and professional commissions.
 [![GitHub](https://img.shields.io/badge/-GitHub-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tanzeemsakib)
 [![Resume](https://img.shields.io/badge/-Resume-000000?style=for-the-badge&logo=pdf&logoColor=white)](assets/resume.pdf)
 
+![REANIMAL INSPIRED ILLUSTRATION](assets/reanimal-inspired-illustration.png)
+
+## Illustration | Personal Work
+
+A stark reinterpretation of the REANIMAL Deluxe Edition cover, this piece isolates a single, disturbing moment and reframes it within a minimal, almost clinical composition. Rendered in halftone textures and restrained grayscale linework, the illustration contrasts innocence with brutality—interrupted only by an aggressive bloom of saturated red that anchors the viewer’s gaze.
+
+Stripped of narrative context, the image leans into ambiguity, allowing form, posture, and negative space to suggest themes of vulnerability, cruelty, and quiet unease—capturing the lingering discomfort that first drew me to the original artwork.
+
+<a href="https://www.behance.net/tanzeemsakib" style="color: black; text-decoration: underline;">See more&gt;&gt;</a>
+
 ![SMOL MOODBOARD](assets/smol-moodboard.gif)
 
 ## smol – Well-being FMCG Brand Design
