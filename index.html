@@ -788,6 +788,33 @@
     el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
   });
 
+ // Parallax hero
+const hero = document.querySelector('.hero');
+const heroName = document.querySelector('.hero-name');
+const heroDesc = document.querySelector('.hero-desc');
+const heroIndex = document.querySelector('.hero-index');
+const heroScroll = document.querySelector('.hero-scroll');
+const heroBg = document.querySelector('.hero-bg');
+
+hero.addEventListener('mousemove', e => {
+  const r = hero.getBoundingClientRect();
+  const x = (e.clientX - r.left) / r.width - 0.5;
+  const y = (e.clientY - r.top) / r.height - 0.5;
+  heroName.style.transform = `translate(${x * -18}px, ${y * -10}px)`;
+  heroDesc.style.transform = `translate(${x * -10}px, ${y * -6}px)`;
+  heroIndex.style.transform = `translate(${x * -6}px, ${y * -4}px)`;
+  heroScroll.style.transform = `translate(${x * -8}px, ${y * -4}px)`;
+  heroBg.style.transform = `translate(${x * 12}px, ${y * 8}px)`;
+});
+
+hero.addEventListener('mouseleave', () => {
+  heroName.style.transform = '';
+  heroDesc.style.transform = '';
+  heroIndex.style.transform = '';
+  heroScroll.style.transform = '';
+  heroBg.style.transform = '';
+});
+
   // Sticky nav
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
