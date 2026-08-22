@@ -206,32 +206,7 @@ section { position: relative; z-index: 1; border-top: 3px solid var(--blue-rule)
   border-top: 3px solid var(--blue-rule);
 }
 .work-list li:last-child .work-row { border-bottom: 3px solid var(--blue-rule); }
-/* .work-row:hover { opacity: 0.6; } */
-
-/* ── CURSOR FOLLOW BOX ── */
-#cursor-follow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 200;
-  pointer-events: none;
-  background: var(--blue);
-  color: var(--bg);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.7rem 1.4rem;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.85);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  will-change: transform, opacity;
-}
-#cursor-follow.active {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
+.work-row:hover { opacity: 0.6; }
 
 @media (max-width: 760px) {
   #cursor-follow { display: none !important; }
@@ -725,38 +700,6 @@ footer {
     document.body.classList.toggle('dark');
     toggle.textContent = document.body.classList.contains('dark') ? 'Day' : 'Night';
   });
-
-
-
-  // ── SCROLL REVEAL ──
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('in'), i * 55);
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  revealEls.forEach(el => io.observe(el));
-
-  // ── CURSOR-FOLLOW HOVER LABEL ──
-  const cursorFollow = document.createElement('div');
-  cursorFollow.id = 'cursor-follow';
-  cursorFollow.textContent = 'View Case Study';
-  document.body.appendChild(cursorFollow);
-  
-  const OFFSET_X = 28; // distance from actual cursor tip
-  const OFFSET_Y = 0;
-  
-  document.querySelectorAll('.work-row').forEach(row => {
-    row.addEventListener('mouseenter', () => cursorFollow.classList.add('active'));
-    row.addEventListener('mouseleave', () => cursorFollow.classList.remove('active'));
-    row.addEventListener('mousemove', (e) => {
-      cursorFollow.style.left = `${e.clientX + OFFSET_X}px`;
-      cursorFollow.style.top = `${e.clientY + OFFSET_Y}px`;
-    });
-  });  
 </script>
 
 </body>
