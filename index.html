@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="description" content="Product designer and visual artist based in Dhaka, Bangladesh. Working across branding, illustration, motion, and UI design."/>
+<meta name="theme-color" content="#ffffff" id="theme-color"/>
+<link rel="canonical" href="https://tanzeemsakib.github.io/"/>
+<meta property="og:title" content="Tanzeem Ahmed - Product Designer &amp; Visual Artist"/>
+<meta property="og:description" content="Product designer and visual artist based in Dhaka, Bangladesh. Branding, illustration, motion, and UI design."/>
+<meta property="og:image" content="https://tanzeemsakib.github.io/assets/og-preview.png"/>
+<meta property="og:url" content="https://tanzeemsakib.github.io/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Tanzeem Ahmed - Product Designer &amp; Visual Artist"/>
+<meta name="twitter:description" content="Product designer and visual artist based in Dhaka, Bangladesh. Branding, illustration, motion, and UI design."/>
+<meta name="twitter:image" content="https://tanzeemsakib.github.io/assets/og-preview.png"/>
+<title>Tanzeem Ahmed - Product Designer &amp; Visual Artist</title>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.14/lenis.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tanzeem Ahmed",
+  "url": "https://tanzeemsakib.github.io/",
+  "image": "https://tanzeemsakib.github.io/assets/og-preview.png",
+  "jobTitle": "Product Designer and Visual Artist",
+  "description": "Product designer and visual artist based in Dhaka, Bangladesh. Working across branding, illustration, motion, and UI design.",
+  "email": "mailto:tasakib69@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dhaka",
+    "addressCountry": "BD"
+  },
+  "worksFor": { "@type": "Organization", "name": "Studio Shwo" },
+  "knowsAbout": ["Product design", "UI/UX design", "Brand identity", "Illustration", "Motion design", "Game development"],
+  "sameAs": [
+    "https://www.behance.net/tanzeemsakib",
+    "https://www.linkedin.com/in/tanzeemsakib",
+    "https://tanzeem-ahmed-sakib.itch.io/",
+    "https://www.instagram.com/tanzeemsakib/"
+  ]
+}
+</script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #1a2fff;
+  --blue-rule: #1a2fff;
+  --bg: #ffffff;
+  --bg-nav: rgba(255,255,255,0.92);
+  --pad: clamp(1.5rem, 5vw, 4rem);
+}
+
+/* ── DARK MODE ── */
+body.dark {
+  --bg: #1a2fff;
+  --bg-nav: rgba(26,47,255,0.92);
+  --blue-rule: #ffffff;
+  --blue: #ffffff;
+}
+
+html { scroll-behavior: auto; } /* lenis handles scroll */
+
+body {
+  background: var(--bg);
+  color: var(--blue);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background 0.4s;
+}
+
+
+
+a { color: inherit; text-decoration: none; }
+
+
+
+/* ── GLASSMORPHISM GRID BACKGROUND ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26,47,255,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,47,255,0.12) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+body.dark::before {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px);
+}
+
+/* once the canvas script is running it draws the whole grid itself, so the static one steps aside */
+.grid-canvas body::before { display: none; }
+
+/* ── LINE GRID (canvas): bends away from the cursor + click ripple ── */
+#grid-ripple {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── MENU ISLAND (GSAP easeReverse pattern) ── */
+.island {
+  position: fixed;
+  top: 1.25rem; left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: var(--bg);
+  border: 1.5px solid var(--blue-rule);
+  border-radius: 0;
+  white-space: nowrap;
+  width: auto;              /* collapsed: just wide enough for the buttons */
+  overflow: hidden;
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.island-logo--cont {
+  position: relative;
+  width: 0;
+  height: 22px;
+  pointer-events: none;
+}
+.island-logo {
+  position: absolute;
+  top: 0; left: 0;
+  margin-left: 0.85rem;
+  font-family: 'DM Serif Display', serif;   /* same face as the hero name */
+  font-size: 1.35rem;
+  line-height: 22px;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  color: var(--blue);
+  opacity: 0;                               /* revealed by the timeline */
+  perspective: 110px;                       /* depth for the rolling characters */
+}
+.island-logo .char {
+  display: inline-block;
+  backface-visibility: hidden;
+}
+
+.island-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Night / Day text toggle */
+#dark-toggle {
+  background: none;
+  border: 1px solid var(--blue-rule);
+  border-radius: 0;
+  padding: 3px 10px;
+  min-width: 4.6em;         /* keeps the pill from resizing when the label changes */
+  font-size: 0.875rem;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--blue);
+  cursor: pointer;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s, opacity 0.2s;
+}
+@media (hover: hover) { #dark-toggle:hover { opacity: 0.55; } }
+#dark-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+.menu-btn {
+  width: 34px; height: 34px;
+  margin: 0; padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--blue);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.menu-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: -3px; }
+
+.button-cont { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; }
+.menu-btn svg { overflow: visible; display: block; }
+
+/* ── OVERLAY ── */
+.menu-overlay {
+  position: fixed; inset: 0;
+  z-index: 900;
+  pointer-events: none;
+}
+.menu-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+}
+body.dark .menu-backdrop { background: rgba(26,47,255,0.88); }
+
+/* the page grid, redrawn above the backdrop so the lines stay crisp while the menu is open */
+.menu-grid {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background-image:
+    linear-gradient(rgba(26,47,255,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,47,255,0.12) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+body.dark .menu-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px);
+}
+
+/* ── PANEL ── */
+.menu-panel {
+  position: absolute;
+  visibility: hidden;
+  top: 5rem; left: 50%;
+  transform: translateX(-50%);
+  width: 90vw; max-width: 400px;
+  padding: 0.375rem;
+  background: var(--bg);
+  border: 1.5px solid var(--blue-rule);
+  border-radius: 0;
+  transition: background 0.4s, border-color 0.4s;
+}
+
+/* ── LINKS ── */
+.menu-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.8rem 1rem;
+  border-radius: 0;
+  color: var(--blue);
+  font-weight: 400; font-size: 1rem; line-height: 1;
+  letter-spacing: 0.02em;
+  -webkit-tap-highlight-color: transparent;
+}
+.menu-link + .menu-link { border-top: 1px solid rgba(26,47,255,0.22); border-radius: 0; }
+body.dark .menu-link + .menu-link { border-top-color: rgba(255,255,255,0.3); }
+/* underline slides in under the label on hover / keyboard focus */
+.menu-link > span:first-child { position: relative; }
+.menu-link > span:first-child::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -5px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.menu-link:focus-visible > span:first-child::after { transform: scaleX(1); }
+@media (hover: hover) { .menu-link:hover > span:first-child::after { transform: scaleX(1); } }
+.menu-link:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+.link-num { font-size: 0.7rem; letter-spacing: 0.08em; opacity: 0.8; }
+
+/* fallback if GSAP fails to load: open/close without animation */
+.no-gsap.menu-open .menu-overlay { pointer-events: auto; }
+.no-gsap.menu-open .menu-backdrop,
+.no-gsap.menu-open .menu-grid { opacity: 1; }
+.no-gsap.menu-open .menu-panel { visibility: visible; }
+
+/* ── HERO ── */
+#hero {
+  position: relative;
+  min-height: 100svh;
+  padding: calc(4.5rem + 55px) var(--pad) 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3rem;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  opacity: 0;
+  animation: fadeUp 0.6s 0.1s ease forwards;
+}
+
+h1.hero-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(4.5rem, 13vw, 12rem);
+  line-height: 0.9;
+  letter-spacing: -0.025em;
+  color: var(--blue);
+  opacity: 0;
+  animation: fadeUp 0.9s 0.2s ease forwards;
+  margin-top: 0.8rem;
+}
+
+.hero-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.52s ease forwards;
+}
+
+.hero-tagline {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  line-height: 1.55;
+  font-weight: 300;
+  max-width: 380px;
+}
+
+.hero-work-link {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-decoration: none;
+}
+.hero-work-link span { display: inline-block; animation: bob 2.2s ease-in-out infinite; }
+
+/* ── SHARED SECTION ── */
+section { position: relative; z-index: 1; border-top: 3px solid var(--blue-rule); padding: 4.5rem var(--pad); }
+
+.sec-heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+/* ── WORK ── */
+.work-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.js .work-list li { opacity: 0; } /* revealed by anime.js */
+
+.work-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: stretch;
+  gap: 3rem;
+  padding: 2rem 0;
+  border-top: 3px solid var(--blue-rule);
+  border-bottom: 3px solid var(--blue-rule);
+}
+
+.work-row-left { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.work-row-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  line-height: 1.05;
+}
+.work-row-title .arr { font-size: 0.7em; margin-left: 0.25em; }
+
+.work-row-desc {
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  line-height: 1.65;
+  font-weight: 300;
+  color: var(--blue);
+  max-width: 560px;
+}
+
+.work-row-tags {
+  font-size: 0.875rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-top: 0.2rem;
+}
+
+.work-thumb {
+  width: clamp(280px, 38vw, 480px);
+  min-height: 280px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  background: #eef0ff;
+  align-self: stretch;
+}
+.work-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(15%);
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.3s;
+}
+.work-row:hover .work-thumb img { transform: scale(1.06); filter: grayscale(0%); }
+
+.behance-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-top: 2.5rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--blue);
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+.behance-link:hover { opacity: 0.45; }
+
+/* ── ILLUSTRATION ── */
+.illus-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 3px;
+}
+.illus-cell {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: #eef0ff;
+}
+.illus-cell img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(10%);
+  transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.35s;
+}
+.illus-cell:hover img { transform: scale(1.06); filter: grayscale(0%); }
+
+/* WebGL bulge overlay (added by script; CSS zoom is the fallback) */
+.illus-cell canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+  filter: grayscale(10%);
+  transition: opacity 0.2s ease, filter 0.35s;
+}
+.illus-cell canvas.on { opacity: 1; }
+.illus-cell:hover canvas { filter: grayscale(0%); }
+.illus-cell.gl:hover img { transform: none; filter: grayscale(10%); }
+
+.illus-more {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1.4rem;
+}
+.illus-more a {
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--blue);
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+.illus-more a:hover { opacity: 0.45; }
+
+/* ── GAMES ── */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 3px;
+}
+
+.games-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  cursor: pointer;
+  color: #fff;
+}
+
+.games-bg-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(10%) brightness(0.72);
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.3s;
+}
+.games-card:hover .games-bg-img { transform: scale(1.06); filter: grayscale(0%) brightness(0.72); }
+
+.games-top {
+  position: absolute;
+  z-index: 2;
+  top: 16.6667%;
+  left: 7%;
+  right: 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.5rem;
+}
+
+.games-tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.games-desc {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  font-weight: 400;
+  text-align: left;
+}
+
+.games-name {
+  display: block;
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  line-height: 0.95;
+  min-height: 1.95em;
+  margin: 0.1rem 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .games-bg-img { transition: none !important; }
+}
+
+/* ── ABOUT ── */
+#about {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: clamp(2rem, 7vw, 7rem);
+  align-items: start;
+}
+
+.about-bio {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: 1.75;
+  font-weight: 300;
+}
+.about-bio + .about-bio { margin-top: 1rem; }
+.about-bio strong { font-weight: 500; }
+
+.about-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 1.5rem;
+  margin-top: 2.5rem;
+}
+.about-col-label {
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0.7rem;
+}
+.about-col-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.about-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.about-socials a {
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--blue);
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+.about-socials a:hover { opacity: 0.45; }
+
+/* ── CONTACT ── */
+#contact { min-height: 42vh; display: flex; flex-direction: column; justify-content: space-between; }
+
+.contact-head {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.5rem, 9vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin-bottom: 2.5rem;
+}
+
+.contact-row a {
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  border-bottom: 1px solid var(--blue);
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+.contact-row a:hover { opacity: 0.45; }
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 1;
+  border-top: 3px solid var(--blue-rule);
+  padding: 1.4rem var(--pad);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--blue);
+  letter-spacing: 0.04em;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes bob {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(5px); }
+}
+
+/* scroll reveal only hides content when JS is running (the .js class is set in <head>) */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* ── EXPERIENCE ── */
+.exp-section {
+  margin-top: 3rem;
+  border-top: 2px solid var(--blue-rule);
+  padding-top: 2rem;
+}
+
+.exp-label {
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+}
+
+.exp-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 2rem;
+  align-items: start;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--blue-rule);
+}
+.exp-item:first-of-type { border-top: none; }
+
+.exp-logo {
+  width: 120px;
+  padding-top: 4px;
+}
+.exp-logo img { width: 100%; height: auto; display: block; }
+
+.exp-info { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.exp-role {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.2;
+}
+
+.exp-meta {
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  color: var(--blue);
+}
+
+.exp-desc {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  font-weight: 300;
+  margin-top: 0.4rem;
+}
+
+/* ── AWARDS ── */
+.awards-section {
+  margin-top: 3rem;
+  border-top: 2px solid var(--blue-rule);
+  padding-top: 2rem;
+}
+
+.award-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--blue-rule);
+}
+.award-item:first-of-type { border-top: none; padding-top: 0; }
+
+.award-org {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.award-title {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.award-year {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* ── CURSOR FOLLOW BOX ── */
+#cursor-follow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  pointer-events: none;
+  background: var(--blue);
+  color: var(--bg);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.4rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.85);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  will-change: transform, opacity;
+}
+#cursor-follow.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+#cursor-follow.on-blue {
+  background: var(--bg);
+  color: var(--blue);
+}
+
+/* tablets / narrow windows: games go 2-up so the text on each card has room */
+@media (max-width: 1000px) {
+  .games-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* phones: unchanged, one item per scroll */
+@media (max-width: 760px) {
+  #about { grid-template-columns: 1fr; }
+  .illus-grid { grid-template-columns: 1fr; gap: 3px; }
+  .games-grid { grid-template-columns: 1fr; gap: 3px; }
+  .work-row { grid-template-columns: 1fr; gap: 1rem; min-height: auto; padding: 1.4rem 0; }
+  .work-thumb { width: 100%; min-height: 200px; }
+  .hero-footer { flex-direction: column; align-items: flex-start; }
+  #cursor-follow { display: none !important; }
+  * { cursor: auto !important; }
+}
+</style>
+</head>
+<body>
+<script>
+  // apply the saved (or system) theme before first paint so there's no flash
+  try {
+    var t = localStorage.getItem('theme');
+    var d = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    if (d) document.body.classList.add('dark');
+  } catch (e) {}
+</script>
+<canvas id="grid-ripple" aria-hidden="true"></canvas>
+
+
+
+<!-- MENU -->
+<div class="island" id="island">
+  <div class="island-logo--cont">
+    <span class="island-logo">Tanzeem Ahmed</span>
+  </div>
+  <div class="island-actions">
+    <button id="dark-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">Night</button>
+    <button class="menu-btn" id="menuToggle" type="button" aria-expanded="false" aria-controls="menu-overlay" aria-label="Open navigation menu">
+      <div class="button-cont">
+        <svg id="menuIcon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <line class="bar bar-top" x1="2" y1="5"  x2="14" y2="5"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line class="bar bar-mid" x1="2" y1="8"  x2="14" y2="8"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line class="bar bar-bot" x1="2" y1="11" x2="14" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </button>
+  </div>
+</div>
+
+<div class="menu-overlay" id="menu-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu" data-lenis-prevent>
+  <div class="menu-backdrop"></div>
+  <div class="menu-grid"></div>
+  <div class="menu-panel">
+    <nav aria-label="Main">
+      <a class="menu-link" href="#about" tabindex="-1"><span>About</span><span class="link-num">01</span></a>
+      <a class="menu-link" href="https://www.behance.net/tanzeemsakib" target="_blank" rel="noopener" tabindex="-1"><span>Bēhance</span><span class="link-num">02</span></a>
+      <a class="menu-link" href="https://tanzeem-ahmed-sakib.itch.io/" target="_blank" rel="noopener" tabindex="-1"><span>itch.io</span><span class="link-num">03</span></a>
+      <a class="menu-link" href="#contact" tabindex="-1"><span>Contact</span><span class="link-num">04</span></a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div>
+    <p class="hero-eyebrow">Portfolio - Dhaka, Bangladesh</p>
+    <h1 class="hero-name">Tanzeem<br/>Ahmed</h1>
+  </div>
+  <div class="hero-footer">
+    <p class="hero-tagline">Product designer and visual artist.<br/>Working across branding, illustration,<br/>motion &amp; UI - available for freelance.</p>
+    <a href="#work" class="hero-work-link">Work <span>↓</span></a>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <h2 class="sec-heading reveal">Work</h2>
+  <ul class="work-list">
+    <li>
+      <a class="work-row" href="https://www.figma.com/design/7Fww5d7FAr1LVqNNxdiNCX/ozmo-consult-webite-redesign?node-id=11-13&amp;t=29RbpQoi2tzpzV3y-1" target="_blank" rel="noopener">
+        <div class="work-row-left">
+          <span class="work-row-title">Ozmo Consult <span class="arr">→</span></span>
+          <p class="work-row-desc">A full website redesign for Ozmo Consult, a cross-border business advisory firm, done at Studio Shwo. Working within the studio's existing logo and brand color, I designed the site end-to-end in Figma - layout, UI, and corporate copy. Currently in development.</p>
+          <span class="work-row-tags">UI/UX · Client Work</span>
+        </div>
+        <div class="work-thumb">
+          <img src="https://tanzeemsakib.github.io/assets/ozmo-consult-mockup.png" alt="Ozmo Consult website redesign" width="960" height="720" loading="lazy" decoding="async"/>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="work-row" href="https://www.behance.net/gallery/250098139/UXUI-Design-for-a-Bangladesh-National-Museum-App" target="_blank" rel="noopener">
+        <div class="work-row-left">
+          <span class="work-row-title">Bangladesh National Museum <span class="arr">→</span></span>
+          <p class="work-row-desc">A research-led UX/UI concept tackling the museum's aesthetic disconnect with Dhaka's urban youth. Covers user surveys, personas, and journey mapping - resulting in a minimalist catalog app giving access to 90,000+ hidden artifacts and frictionless bKash ticketing.</p>
+          <span class="work-row-tags">UI/UX · Case Study</span>
+        </div>
+        <div class="work-thumb">
+          <img src="https://tanzeemsakib.github.io/assets/bangladesh-national-museum-ui-ux.png" alt="Bangladesh National Museum App" width="960" height="720" loading="lazy" decoding="async"/>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="work-row" href="https://www.behance.net/gallery/242526127/Incognito-Brief-Driven-Design-Project" target="_blank" rel="noopener">
+        <div class="work-row-left">
+          <span class="work-row-title">Incognito <span class="arr">→</span></span>
+          <p class="work-row-desc">A brief-driven design project exploring visual identity through restraint and ambiguity. Developed from a design brief through research, concept, and final execution.</p>
+          <span class="work-row-tags">Branding · Brief-Driven</span>
+        </div>
+        <div class="work-thumb">
+          <img src="https://tanzeemsakib.github.io/assets/incognito.png" alt="Incognito" width="960" height="720" loading="lazy" decoding="async"/>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="work-row" href="https://www.behance.net/gallery/243395689/Archive-Resist-Conclave-Commissioned-Client-Work" target="_blank" rel="noopener">
+        <div class="work-row-left">
+          <span class="work-row-title">Archive &amp; Resist Conclave <span class="arr">→</span></span>
+          <p class="work-row-desc">Commissioned motion and graphic design for Archive &amp; Resist Conclave 2026, organized by Activate Rights. Social media assets developed for outreach and digital presence, working under Shundor Studio.</p>
+          <span class="work-row-tags">Motion · Client Work</span>
+        </div>
+        <div class="work-thumb">
+          <img src="https://tanzeemsakib.github.io/assets/archive-and-resist-conclave.gif" alt="Archive &amp; Resist Conclave" width="960" height="720" loading="lazy" decoding="async"/>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="work-row" href="https://www.behance.net/gallery/210719535/smol-Well-being-Pet-Food-Brand" target="_blank" rel="noopener">
+        <div class="work-row-left">
+          <span class="work-row-title">smol | Well-being Pet Food <span class="arr">→</span></span>
+          <p class="work-row-desc">Full visual identity for a locally-produced pet food brand built around sustainability and transparency. Covers packaging, UI mockups, and brand guidelines developed for a business case competition.</p>
+          <span class="work-row-tags">Branding · Business Competition</span>
+        </div>
+        <div class="work-thumb">
+          <img src="https://tanzeemsakib.github.io/assets/smol-moodboard.gif" alt="smol pet food brand" width="960" height="720" loading="lazy" decoding="async"/>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="work-row" href="https://www.behance.net/gallery/169406667/AMPS-Social-Media-Showcase" target="_blank" rel="noopener">
+        <div class="work-row-left">
+          <span class="work-row-title">Social Media Graphics &amp; Motion <span class="arr">→</span></span>
+          <p class="work-row-desc">Club graphics and motion work. Visual content developed for social platforms - balancing brand consistency with scroll-stopping design.</p>
+          <span class="work-row-tags">Graphic Design · Club Work</span>
+        </div>
+        <div class="work-thumb">
+          <img src="https://tanzeemsakib.github.io/assets/social-media.png" alt="Social media graphics" width="960" height="720" loading="lazy" decoding="async"/>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <a class="behance-link reveal" href="https://www.behance.net/tanzeemsakib" target="_blank" rel="noopener">View more →</a>
+</section>
+
+<!-- ILLUSTRATION -->
+<section id="illustration">
+  <h2 class="sec-heading reveal">Illustration</h2>
+  <div class="illus-grid reveal">
+    <div class="illus-cell">
+      <img src="https://tanzeemsakib.github.io/assets/bloodborne-fan-art.png" alt="Bloodborne Fan Art" width="800" height="1000" loading="lazy" decoding="async"/>
+    </div>
+    <div class="illus-cell">
+      <img src="https://tanzeemsakib.github.io/assets/illus_reanimal.png" alt="REANIMAL Reinterpretation" width="800" height="1000" loading="lazy" decoding="async"/>
+    </div>
+    <div class="illus-cell">
+      <img src="https://tanzeemsakib.github.io/assets/illus_lovecraft.png" alt="Lovecraftian Horror" width="800" height="1000" loading="lazy" decoding="async"/>
+    </div>
+    <div class="illus-cell">
+      <img src="https://tanzeemsakib.github.io/assets/illus_re4.png" alt="RE4 Fan Art" width="800" height="1000" loading="lazy" decoding="async"/>
+    </div>
+  </div>
+  <div class="illus-more reveal">
+    <a href="https://www.behance.net/gallery/242525529/Illustration-Showcase" target="_blank" rel="noopener">View more →</a>
+  </div>
+</section>
+
+<!-- GAMES -->
+<section id="games">
+  <h2 class="sec-heading reveal">Games</h2>
+  <div class="games-grid reveal">
+    <a class="games-card" data-cursor-text="Play Game" href="https://tanzeem-ahmed-sakib.itch.io/heated-rivalry" target="_blank" rel="noopener">
+      <img class="games-bg-img" src="https://tanzeemsakib.github.io/assets/heated-rivalry-thumb.gif" alt="" width="600" height="800" loading="lazy" decoding="async"/>
+      <div class="games-top">
+        <span class="games-tag">Puzzle</span>
+        <span class="games-name">Heated Rivalry</span>
+        <p class="games-desc">Kick off the CEO before the meeting kicks off | Winner of the IUT 12th ICT Fest GameJam</p>
+      </div>
+    </a>
+    <a class="games-card" data-cursor-text="Play Game" href="https://tanzeem-ahmed-sakib.itch.io/maya" target="_blank" rel="noopener">
+      <img class="games-bg-img" src="https://tanzeemsakib.github.io/assets/maya-thumb.gif" alt="" width="600" height="800" loading="lazy" decoding="async"/>
+      <div class="games-top">
+        <span class="games-tag">Survival</span>
+        <span class="games-name">MAYA</span>
+        <p class="games-desc">Support the Nordic warrior against the cold in this BUET CSE FEST 2024 GAME JAM adventure!</p>
+      </div>
+    </a>
+    <a class="games-card" data-cursor-text="Play Game" href="https://tanzeem-ahmed-sakib.itch.io/kitchen-keep" target="_blank" rel="noopener">
+      <img class="games-bg-img" src="https://tanzeemsakib.github.io/assets/kitchen-keep-thumb.gif" alt="" width="600" height="800" loading="lazy" decoding="async"/>
+      <div class="games-top">
+        <span class="games-tag">Strategy</span>
+        <span class="games-name">Kitchen Keep</span>
+        <p class="games-desc">A kitchen defense indie game | Submission for the IUT National ICT Fest GameJam 2024</p>
+      </div>
+    </a>
+    <a class="games-card" data-cursor-text="Play Game" href="https://tanzeem-ahmed-sakib.itch.io/flip-n-frolic" target="_blank" rel="noopener">
+      <img class="games-bg-img" src="https://tanzeemsakib.github.io/assets/flip-n-frolic-thumb.gif" alt="" width="600" height="800" loading="lazy" decoding="async"/>
+      <div class="games-top">
+        <span class="games-tag">Platformer</span>
+        <span class="games-name">Flip 'n' Frolic</span>
+        <p class="games-desc">An Indie 3D Puzzle Platformer for the BUET CSE Fest Game Jam 2023</p>
+      </div>
+    </a>
+  </div>
+  <div class="illus-more reveal">
+    <a href="https://tanzeem-ahmed-sakib.itch.io/" target="_blank" rel="noopener">View more →</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <h2 class="sec-heading reveal">About</h2>
+  </div>
+  <div class="about-right">
+    <p class="about-bio reveal">
+      I'm a product designer and visual artist based in <strong>Dhaka, Bangladesh</strong>, working across branding, illustration, motion, and UI. My work tends toward the editorial - restrained palettes, deliberate composition, ideas that stay with you.
+    </p>
+    <p class="about-bio reveal">
+      Alongside design, I have a background in <strong>applied mathematics</strong> at the University of Dhaka - which informs how I approach problems: systematically, but with room for the unexpected.
+    </p>
+    <p class="about-bio reveal">
+      Associated with <strong>Shundor Studio</strong> as a contractual Design Associate. Most recently worked with Activate Rights on motion and social media assets for <strong>Archive &amp; Resist Conclave 2026</strong> - a two-day international convening that brought together archivists, human rights defenders, and civic technologists from across the UK, USA, Indonesia, Kenya, South Africa, and beyond, across 19 parallel sessions and 4 plenaries.
+    </p>
+    <p class="about-bio reveal">
+      Also edited video content for <strong>Fahim Explains</strong>, growing the platform from 800–2K average views to peaks of 120K and 112K - 600K+ total views across 14 edited posts.
+    </p>
+    <p class="about-bio reveal">
+      Currently working at <strong>Studio Shwo</strong> in the Design wing. Open to <strong>freelance commissions</strong> and full-time opportunities.
+    </p>
+    <div class="exp-section reveal">
+      <p class="exp-label">Experience</p>
+      <div class="exp-item">
+        <div class="exp-logo">
+          <img src="https://tanzeemsakib.github.io/assets/shwo-logo-branding.svg" alt="Studio Shwo" loading="lazy" decoding="async"/>
+        </div>
+        <div class="exp-info">
+          <span class="exp-role">Graphic Designer (UI/UX)</span>
+          <span class="exp-meta">Design Wing · June 2026 – Present</span>
+          <p class="exp-desc">Working across brand identity, event identity, UI/UX design, publication design, illustration, and installations at a boutique design studio known for cultural and institutional clients.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-logo">
+          <img src="https://tanzeemsakib.github.io/assets/bjit-logo-branding.svg" alt="BJIT Group LTD." loading="lazy" decoding="async"/>
+        </div>
+        <div class="exp-info">
+          <span class="exp-role">Intern - Graphic Design</span>
+          <span class="exp-meta">Branding, IR &amp; PR Team · May 2026 – June 2026</span>
+          <p class="exp-desc">Working on visual assets, brand identity, and graphic design for internal and external communications at a global IT company serving clients across Europe and Asia.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="awards-section reveal">
+      <p class="exp-label">Awards</p>
+      <div class="award-item">
+        <span class="award-org">IUT Computer Society</span>
+        <p class="award-title">Champion, IUT ICT FEST 2026 GameJam</p>
+        <span class="award-year">2026</span>
+      </div>
+    </div>
+
+    <div class="about-cols reveal">
+      <div>
+        <p class="about-col-label">Disciplines</p>
+        <div class="about-col-items">
+          <span>Graphic Design</span>
+          <span>Brand Identity</span>
+          <span>Illustration</span>
+          <span>Motion Design</span>
+          <span>UI / UX</span>
+          <span>Game Development</span>
+        </div>
+      </div>
+      <div>
+        <p class="about-col-label">Tools</p>
+        <div class="about-col-items">
+          <span>Adobe Illustrator</span>
+          <span>Adobe Photoshop</span>
+          <span>After Effects</span>
+          <span>Figma</span>
+          <span>Godot</span>
+          <span>Blender</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-socials reveal">
+      <a href="https://www.behance.net/tanzeemsakib" target="_blank" rel="noopener">Behance</a>
+      <a href="https://www.linkedin.com/in/tanzeemsakib" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://tanzeem-ahmed-sakib.itch.io/" target="_blank" rel="noopener">itch.io</a>
+      <a href="http://instagram.com/tanzeemsakib" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://tanzeemsakib.github.io/assets/resume.pdf" target="_blank" rel="noopener">Resume ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="contact-head reveal">Let's make something real.</h2>
+  <div class="contact-row reveal">
+    <a href="mailto:tasakib69@gmail.com">tasakib69@gmail.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Available for freelance - Dhaka, Bangladesh</span>
+  <span>Tanzeem Ahmed © 2026</span>
+</footer>
+
+<script>
+  // ── LENIS SMOOTH SCROLL (guarded; waits for the deferred library) ──
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      const lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+    } catch(e) { /* Lenis failed to load: native scrolling */ }
+  });
+
+  // ── DARK MODE TOGGLE (saved choice, falls back to the system setting) ──
+  const toggle = document.getElementById('dark-toggle');
+  const themeMeta = document.getElementById('theme-color');
+
+  function syncTheme() {
+    const dark = document.body.classList.contains('dark');
+    toggle.setAttribute('aria-pressed', dark);
+    toggle.textContent = dark ? 'Day' : 'Night';
+    if (themeMeta) themeMeta.setAttribute('content', dark ? '#1a2fff' : '#ffffff');
+  }
+  syncTheme();
+
+  toggle.addEventListener('click', () => {
+    const dark = document.body.classList.toggle('dark');
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+    syncTheme();
+  });
+
+  // follow the system setting live, unless the visitor has chosen a theme themselves
+  const systemDark = matchMedia('(prefers-color-scheme: dark)');
+  if (systemDark.addEventListener) {
+    systemDark.addEventListener('change', (e) => {
+      let saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (_) {}
+      if (saved) return;
+      document.body.classList.toggle('dark', e.matches);
+      syncTheme();
+    });
+  }
+
+  // ── SCROLL REVEAL ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('in'), i * 55);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ── CURSOR-FOLLOW HOVER LABEL ──
+  const cursorFollow = document.createElement('div');
+  cursorFollow.id = 'cursor-follow';
+  cursorFollow.textContent = 'View Case Study';
+  document.body.appendChild(cursorFollow);
+
+  const OFFSET_X = 28; // distance from actual cursor tip
+  const OFFSET_Y = 0;
+
+  document.querySelectorAll('.work-row, .games-card').forEach(row => {
+    const label = row.dataset.cursorText || 'View Case Study';
+    const onBlue = row.classList.contains('games-card');
+    row.addEventListener('mouseenter', () => {
+      cursorFollow.textContent = label;
+      cursorFollow.classList.toggle('on-blue', onBlue);
+      cursorFollow.classList.add('active');
+    });
+    row.addEventListener('mouseleave', () => cursorFollow.classList.remove('active'));
+    row.addEventListener('mousemove', (e) => {
+      cursorFollow.style.left = `${e.clientX + OFFSET_X}px`;
+      cursorFollow.style.top = `${e.clientY + OFFSET_Y}px`;
+    });
+  });
+</script>
+
+<!-- ── WORK ROWS: anime.js scroll fade-in ── -->
+<script>
+  (function () {
+    const rows = document.querySelectorAll('.work-list li');
+    const show = () => rows.forEach(r => (r.style.opacity = 1));
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return show();
+
+    import('https://cdn.jsdelivr.net/npm/animejs@4/+esm')
+      .then(({ animate }) => {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            animate(entry.target, {
+              y: [30, 0],
+              opacity: [0, 1],
+              duration: 700,
+              ease: 'outQuad'
+            });
+            obs.unobserve(entry.target);
+          });
+        }, { threshold: 0.15 });
+        rows.forEach((r) => obs.observe(r));
+      })
+      .catch(show); // if the CDN fails, rows still appear
+  })();
+</script>
+
+<!-- ── ILLUSTRATION: WebGL bulge hover (OGL, after Codrops / Robin Payot) ── -->
+<script type="module">
+  import { Renderer, Program, Mesh, Triangle, Texture, Vec2 } from 'https://cdn.jsdelivr.net/npm/ogl@1/+esm';
+
+  const canHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const section = document.getElementById('illustration');
+
+  if (canHover && !reduce && section) {
+    const vertex = /* glsl */`
+      attribute vec2 uv;
+      attribute vec2 position;
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = vec4(position, 0.0, 1.0);
+      }`;
+
+    const fragment = /* glsl */`
+      precision highp float;
+      uniform sampler2D uTexture;
+      uniform vec2 uMouse;
+      uniform vec2 uResolution;
+      uniform vec2 uTextureResolution;
+      uniform float uAmount;
+      varying vec2 vUv;
+
+      const float radius = 0.6;
+      const float strength = 1.1;
+
+      // "background-size: cover" for UVs
+      vec2 resizeUvCover(vec2 uv, vec2 size, vec2 resolution) {
+        vec2 ratio = vec2(
+          min((resolution.x / resolution.y) / (size.x / size.y), 1.0),
+          min((resolution.y / resolution.x) / (size.y / size.x), 1.0)
+        );
+        return vec2(
+          uv.x * ratio.x + (1.0 - ratio.x) * 0.5,
+          uv.y * ratio.y + (1.0 - ratio.y) * 0.5
+        );
+      }
+
+      void main() {
+        vec2 uv = vUv;
+
+        // bulge around the mouse; aspect-corrected so the lens stays round
+        vec2 d = uv - uMouse;
+        d.x *= uResolution.x / uResolution.y;
+        float dist = length(d) / radius;
+        float k = mix(1.0, strength / (1.0 + dist * dist), uAmount);
+        uv = uMouse + (uv - uMouse) * k;
+
+        uv = resizeUvCover(uv, uTextureResolution, uResolution);
+        gl_FragColor = vec4(texture2D(uTexture, uv).rgb, 1.0);
+      }`;
+
+    const loadImage = (url) => new Promise((resolve, reject) => {
+      const image = new Image();
+      image.crossOrigin = 'anonymous';
+      image.onload = () => resolve(image);
+      image.onerror = reject;
+      image.src = url;
+    });
+
+    async function setup(cell) {
+      const img = cell.querySelector('img');
+      if (!img) return;
+
+      const canvas = document.createElement('canvas');
+      const renderer = new Renderer({ canvas, dpr: Math.min(window.devicePixelRatio, 2), alpha: false });
+      const gl = renderer.gl;
+
+      const image = await loadImage(img.currentSrc || img.src);
+      const texture = new Texture(gl);
+      texture.image = image;
+
+      const program = new Program(gl, {
+        vertex,
+        fragment,
+        uniforms: {
+          uTexture: { value: texture },
+          uMouse: { value: new Vec2(0.5, 0.5) },
+          uAmount: { value: 0 },
+          uResolution: { value: new Vec2(1, 1) },
+          uTextureResolution: { value: new Vec2(image.naturalWidth, image.naturalHeight) }
+        }
+      });
+      const mesh = new Mesh(gl, { geometry: new Triangle(gl), program });
+
+      const resize = () => {
+        const { width, height } = cell.getBoundingClientRect();
+        if (!width || !height) return;
+        renderer.setSize(width, height);
+        program.uniforms.uResolution.value.set(width, height);
+      };
+      new ResizeObserver(resize).observe(cell);
+      resize();
+
+      cell.appendChild(canvas);
+      cell.classList.add('gl');
+
+      const mouse = { x: 0.5, y: 0.5 };
+      const target = { x: 0.5, y: 0.5 };
+      let amount = 0, hovered = false, raf = 0;
+
+      function frame() {
+        raf = 0;
+        mouse.x += (target.x - mouse.x) * 0.14;
+        mouse.y += (target.y - mouse.y) * 0.14;
+        amount += ((hovered ? 1 : 0) - amount) * 0.12;
+
+        program.uniforms.uMouse.value.set(mouse.x, mouse.y);
+        program.uniforms.uAmount.value = amount;
+        renderer.render({ scene: mesh });
+
+        if (hovered || amount > 0.004) raf = requestAnimationFrame(frame);
+        else canvas.classList.remove('on'); // back to the plain <img>
+      }
+
+      const setTarget = (e) => {
+        const r = cell.getBoundingClientRect();
+        target.x = (e.clientX - r.left) / r.width;
+        target.y = 1 - (e.clientY - r.top) / r.height;
+      };
+
+      cell.addEventListener('pointerenter', (e) => {
+        hovered = true;
+        setTarget(e);
+        if (amount < 0.01) { mouse.x = target.x; mouse.y = target.y; }
+        cancelAnimationFrame(raf);
+        frame();                       // draw first frame before fading in
+        canvas.classList.add('on');
+      });
+      cell.addEventListener('pointermove', setTarget);
+      cell.addEventListener('pointerleave', () => {
+        hovered = false;
+        if (!raf) raf = requestAnimationFrame(frame);
+      });
+    }
+
+    // Prepare the four canvases just before the section scrolls into view
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((en) => en.isIntersecting)) return;
+      io.disconnect();
+      section.querySelectorAll('.illus-cell').forEach((cell) => {
+        setup(cell).catch(() => {}); // any failure leaves the normal image + CSS hover
+      });
+    }, { rootMargin: '400px 0px' });
+    io.observe(section);
+  }
+</script>
+
+<!-- ── MENU: expanding island + panel (GSAP 3.15 easeReverse, after the GSAP demo) ── -->
+<script>
+// waits for DOMContentLoaded because the GSAP scripts are deferred
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.getElementById('menuToggle');
+  const overlay = document.getElementById('menu-overlay');
+  const links = [...overlay.querySelectorAll('.menu-link')];
+  const speed = matchMedia('(prefers-reduced-motion: reduce)').matches ? 3 : 1;
+  let isOpen = false, tl;
+
+  if (!window.gsap) document.documentElement.classList.add('no-gsap');
+
+  // name reveal: characters roll in like the GSAP "Rolling text" demo (one pass instead of a loop)
+  let split = null;
+  if (window.gsap && window.SplitText) {
+    gsap.registerPlugin(SplitText);
+    split = SplitText.create('.island-logo', { type: 'chars', charsClass: 'char' });
+  }
+
+  function build() {
+    tl && tl.revert();
+    const expandedWidth = Math.min(window.innerWidth * 0.9, 400);
+    tl = gsap.timeline({ paused: true })
+      .set('.menu-overlay', { pointerEvents: 'auto' })
+      .to('.island', { width: expandedWidth, duration: 0.8, ease: 'back.out(2)', easeReverse: 'power2.out' }, 0);
+
+    if (split) {
+      tl.set('.island-logo', { opacity: 1 }, 0.12)
+        .fromTo(split.chars,
+          { rotationX: -90, opacity: 0 },
+          { rotationX: 0, opacity: 1, duration: 0.55, stagger: 0.035, ease: 'power3.out',
+            easeReverse: true, transformOrigin: '50% 50% -16' }, 0.12);
+    } else {                                   // SplitText didn't load: simple fade
+      tl.to('.island-logo', { opacity: 1, duration: 0.4, ease: 'power2.out', easeReverse: true }, 0.12);
+    }
+
+    tl
+      .to('.bar-mid', { opacity: 0, duration: 0.15, ease: 'power2.in', easeReverse: true }, 0)
+      .to('.bar-top', { attr: { x1: 3, y1: 3, x2: 13, y2: 13 }, duration: 0.28, ease: 'power3.inOut' }, 0)
+      .to('.bar-bot', { attr: { x1: 13, y1: 3, x2: 3, y2: 13 }, duration: 0.28, ease: 'power3.inOut' }, 0)
+      .to('.menu-backdrop, .menu-grid', { opacity: 1, duration: 0.3, ease: 'power2.out' }, 0)
+      .from('.menu-panel', { autoAlpha: 0, yPercent: -10, scale: 0.6, duration: 0.8, transformOrigin: 'top center', ease: 'back.out(2)', easeReverse: 'power3.out' }, 0.1)
+      .from('.menu-link', { opacity: 0, y: 6, duration: 0.32, ease: 'power2.out', easeReverse: true, stagger: 0.05 }, 0.22);
+  }
+  if (window.gsap) build();
+
+  function setOpen(open) {
+    isOpen = open;
+    btn.setAttribute('aria-expanded', open);
+    btn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    links.forEach((l) => l.setAttribute('tabindex', open ? '0' : '-1'));
+    document.documentElement.classList.toggle('menu-open', open);
+    if (!window.gsap) return;
+    if (open) {
+      tl.timeScale(speed).play();
+    } else {
+      tl.eventCallback('onReverseComplete', () => gsap.set('.menu-overlay', { pointerEvents: 'none' }));
+      tl.timeScale(speed).reverse();
+    }
+  }
+
+  btn.addEventListener('click', () => setOpen(!isOpen));
+  overlay.querySelector('.menu-backdrop').addEventListener('click', () => { if (isOpen) setOpen(false); });
+  links.forEach((l) => l.addEventListener('click', () => { if (isOpen) setOpen(false); }));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) { setOpen(false); btn.focus(); }
+  });
+  overlay.addEventListener('keydown', (e) => {         // keep Tab inside the open menu
+    if (!isOpen || e.key !== 'Tab') return;
+    const first = links[0], last = links[links.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  // the page behind the menu shouldn't scroll
+  overlay.addEventListener('wheel', (e) => e.preventDefault(), { passive: false });
+  overlay.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+
+  // island width depends on the viewport, so rebuild when closed
+  window.addEventListener('resize', () => { if (!isOpen && window.gsap) build(); });
+});
+</script>
+
+<!-- ── BACKGROUND: line grid that bends away from the cursor + click ripple (plain canvas, no libraries) ── -->
+<script>
+(function () {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const canvas = document.getElementById('grid-ripple');
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;                          // no canvas: the static CSS grid stays
+
+  const GAP = 50;          // matches the CSS grid (background-size: 50px)
+  const STEP = 8;          // px between sample points along each line
+  const BUCKETS = 20;      // brightness levels for the glow (many, so no visible steps)
+
+  // hover: a smooth bump that pushes the lines away from the cursor
+  const HOVER_SIGMA = 55;  // px, width of the bump
+  const PUSH = 0.75;       // 0-1, how strongly lines are pushed (below 1 so a line never folds over itself)
+  const FLING = 0.2;       // how much fast mouse movement carries the lines along
+  const SPRING = 0.06;     // how strongly lines return
+  const FRICTION = 0.7;    // lower = settles faster (0.7 gives one gentle overshoot, no wobble)
+
+  // click: ring travelling through the grid
+  const SPEED = 0.8;       // px per ms
+  const RING = 55;         // ring thickness (px)
+  const AMP = 12;          // px the lines bulge outward
+  const LIFE = 1400;       // ms until the ripple has faded
+
+  const CUTOFF2 = Math.pow(HOVER_SIGMA * 2.4, 2);   // beyond this the bump is effectively zero
+  const INV_S2 = 1 / (HOVER_SIGMA * HOVER_SIGMA);
+
+  let W, H, dpr, lines = [];
+  const ripples = [];
+  let active = [], raf = 0, last = 0;
+  const mouse = { x: 0, y: 0, on: false, lx: null, ly: null, vx: 0, vy: 0 };
+  let sw = 0, sx = 0, sy = 0; // result of sample()
+
+  const clamp = (v) => Math.max(-40, Math.min(40, v));
+
+  function build() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+
+    lines = [];
+    const make = (horizontal) => {
+      const count = Math.floor((horizontal ? H : W) / GAP) + 1;
+      const n = Math.floor((horizontal ? W : H) / STEP) + 3; // points run from -STEP past the edge
+      for (let l = 0; l < count; l++) {
+        const L = {
+          h: horizontal, fixed: 0.5 + l * GAP, n,
+          dx: new Float32Array(n), dy: new Float32Array(n),   // displacement
+          vx: new Float32Array(n), vy: new Float32Array(n),   // velocity
+          px: new Float32Array(n), py: new Float32Array(n),   // final position
+          pw: new Float32Array(n),                             // glow weight 0-1 (what gets drawn)
+          gl: new Float32Array(n)                              // glow eased toward the cursor's reach
+        };
+        for (let i = 0; i < n; i++) {
+          const s = (i - 1) * STEP;
+          L.px[i] = horizontal ? s : L.fixed;
+          L.py[i] = horizontal ? L.fixed : s;
+        }
+        lines.push(L);
+      }
+    };
+    make(true); make(false);
+    draw();
+  }
+
+  // click-ripple strength + outward displacement at a point
+  function sample(x, y) {
+    let w = 0, px = 0, py = 0;
+    for (const r of active) {
+      const dx = x - r.x, dy = y - r.y;
+      const d = Math.hypot(dx, dy) || 1;
+      const t = (d - r.front) / RING;
+      if (t > 3 || t < -3) continue;
+      const e = Math.exp(-t * t) * r.fade;
+      if (e > w) w = e;
+      px += (dx / d) * e * AMP;
+      py += (dy / d) * e * AMP;
+    }
+    sw = w; sx = px; sy = py;
+  }
+
+  // draws the whole grid: every line is one continuous curve (quadratic segments
+  // between midpoints), so bends are smooth and nothing is ever broken into pieces
+  function draw() {
+    const dark = document.body.classList.contains('dark');
+    const rgb = dark ? '255,255,255' : '26,47,255';
+    const base = dark ? 0.2 : 0.12;      // same strength as the CSS grid
+    const peak = dark ? 0.9 : 0.75;      // glow on lines that are being moved
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+
+    const basePath = new Path2D();
+    const glow = Array.from({ length: BUCKETS }, () => new Path2D());
+
+    for (const L of lines) {
+      const n = L.n, px = L.px, py = L.py, pw = L.pw;
+
+      basePath.moveTo(px[0], py[0]);
+      basePath.lineTo((px[0] + px[1]) / 2, (py[0] + py[1]) / 2);
+      let lastB = -1;
+      for (let i = 1; i < n - 1; i++) {
+        const sx0 = (px[i - 1] + px[i]) / 2, sy0 = (py[i - 1] + py[i]) / 2;
+        const mx = (px[i] + px[i + 1]) / 2, my = (py[i] + py[i + 1]) / 2;
+        basePath.quadraticCurveTo(px[i], py[i], mx, my);
+
+        // glow: consecutive pieces with the same brightness are joined into one run
+        const w = pw[i];
+        if (w < 0.03) { lastB = -1; continue; }
+        const b = Math.min(BUCKETS - 1, (w * BUCKETS) | 0);
+        const p = glow[b];
+        if (lastB !== b) p.moveTo(sx0, sy0);
+        p.quadraticCurveTo(px[i], py[i], mx, my);
+        lastB = b;
+      }
+      basePath.lineTo(px[n - 1], py[n - 1]);
+    }
+
+    ctx.lineCap = 'butt';
+    ctx.lineJoin = 'round';
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = `rgba(${rgb},${base})`;
+    ctx.stroke(basePath);
+    ctx.lineWidth = 1.4;
+    for (let b = 0; b < BUCKETS; b++) {
+      ctx.strokeStyle = `rgba(${rgb},${((b + 0.5) / BUCKETS) * peak})`;
+      ctx.stroke(glow[b]);
+    }
+  }
+
+  function frame(now) {
+    raf = 0;
+    const dt = Math.min((now - last) / 16.667 || 1, 3);
+    last = now;
+
+    for (let i = ripples.length - 1; i >= 0; i--)
+      if (now - ripples[i].t0 > LIFE) ripples.splice(i, 1);
+    active = ripples.map((r) => ({
+      x: r.x, y: r.y,
+      front: (now - r.t0) * SPEED,
+      fade: 1 - (now - r.t0) / LIFE
+    }));
+
+    const damp = Math.pow(FRICTION, dt);
+    let moving = false;
+
+    for (const L of lines) {
+      for (let i = 0; i < L.n; i++) {
+        const s = (i - 1) * STEP;
+        const x = L.h ? s : L.fixed;
+        const y = L.h ? L.fixed : s;
+
+        // where the cursor wants this point to be: a smooth bump with no jump under the cursor
+        let tx = 0, ty = 0, g = 0;
+        if (mouse.on) {
+          const mdx = x - mouse.x, mdy = y - mouse.y;
+          const d2 = mdx * mdx + mdy * mdy;
+          if (d2 < CUTOFF2) {
+            g = Math.exp(-d2 * INV_S2);
+            tx = (mdx * PUSH + mouse.vx * FLING) * g;
+            ty = (mdy * PUSH + mouse.vy * FLING) * g;
+          }
+        }
+
+        // spring toward the target
+        L.vx[i] += (tx - L.dx[i]) * SPRING * dt;
+        L.vy[i] += (ty - L.dy[i]) * SPRING * dt;
+        L.vx[i] *= damp; L.vy[i] *= damp;
+        L.dx[i] += L.vx[i] * dt; L.dy[i] += L.vy[i] * dt;
+
+        if (Math.abs(L.dx[i] - tx) + Math.abs(L.dy[i] - ty) +
+            Math.abs(L.vx[i]) + Math.abs(L.vy[i]) > 0.05) moving = true;
+
+        // glow follows the cursor's reach (rises fast, fades slowly), so it never drops out under the cursor
+        L.gl[i] += (g - L.gl[i]) * Math.min(1, (g > L.gl[i] ? 0.35 : 0.08) * dt);
+        if (Math.abs(g - L.gl[i]) > 0.03) moving = true;
+
+        // hover displacement + click ripple
+        let ox = L.dx[i], oy = L.dy[i];
+        let w = L.gl[i];
+        if (active.length) {
+          sample(x, y);
+          if (sw > w) w = sw;
+          ox += sx; oy += sy;
+        }
+
+        L.px[i] = x + ox; L.py[i] = y + oy; L.pw[i] = w;
+      }
+    }
+
+    draw();
+
+    mouse.vx *= Math.pow(0.85, dt); mouse.vy *= Math.pow(0.85, dt);
+    if (moving || ripples.length) raf = requestAnimationFrame(frame); // otherwise sleep
+  }
+
+  function wake() {
+    if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); }
+  }
+
+  build();
+  document.documentElement.classList.add('grid-canvas');   // the canvas now draws the grid; hide the CSS one
+  window.addEventListener('resize', build);
+  new MutationObserver(draw).observe(document.body, { attributes: true, attributeFilter: ['class'] }); // Night/Day
+
+  window.addEventListener('pointermove', (e) => {
+    if (e.pointerType === 'touch') return;
+    if (mouse.lx !== null) {
+      mouse.vx = clamp(mouse.vx * 0.4 + (e.clientX - mouse.lx) * 0.6);
+      mouse.vy = clamp(mouse.vy * 0.4 + (e.clientY - mouse.ly) * 0.6);
+    }
+    mouse.x = mouse.lx = e.clientX;
+    mouse.y = mouse.ly = e.clientY;
+    mouse.on = true;
+    wake();
+  }, { passive: true });
+
+  document.documentElement.addEventListener('mouseleave', () => {
+    mouse.on = false; mouse.lx = mouse.ly = null; mouse.vx = mouse.vy = 0;
+    wake();
+  });
+
+  window.addEventListener('pointerdown', (e) => {
+    if (e.button > 0) return; // primary button / touch only
+    ripples.push({ x: e.clientX, y: e.clientY, t0: performance.now() });
+    wake();
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
